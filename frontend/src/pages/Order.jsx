@@ -37,7 +37,7 @@ function Order() {
         </div>
       )}
       <div className="order-section">
-        <a href="paytm.com"><button
+        <a href="https://paytm.com"><button
           onClick={handleOrderNow}
           className="order-button"
         >
