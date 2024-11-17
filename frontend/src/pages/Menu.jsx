@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import './Menu.css'
 
 function Menu() {
   const [menuItems, setMenuItems] = useState([]);
@@ -78,7 +79,6 @@ function Menu() {
 
   return (
     <div className="menu-container">
-      <h1>Our Menu</h1>
       {menuItems.length === 0 ? (
         <p>No menu items available</p>
       ) : (

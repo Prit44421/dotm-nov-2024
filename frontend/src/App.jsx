@@ -5,7 +5,7 @@ import LandingAnimation from './components/LandingAnimation';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import AuthForm from './pages/AuthForm'; // Ensure you have an AuthForm component
-// import Menu from './pages/Menu'; // Ensure you have a Menu component
+import Menu from './pages/Menu'; // Ensure you have a Menu component
 // import Order from './pages/Order'; // Ensure you have an Order component
 // import Credits from './pages/Credits'; // Ensure you have a Credits component
 
@@ -34,8 +34,8 @@ function App() {
         
         {/* Other routes */}
         <Route path="/auth" element={<AuthForm onAuthSuccess={handleAuthSuccess} />} />
-        {/* <Route path="/menu" element={<Menu />} />
-        <Route path="/order" element={<Order />} />
+         <Route path="/menu" element={<Menu />} />
+        {/*<Route path="/order" element={<Order />} />
         <Route path="/credits" element={<Credits />} /> */}
       </Routes>
     </Router>

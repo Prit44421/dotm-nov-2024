@@ -1,20 +1,49 @@
 .menu-container {
-  max-width: 1200px;
+  max-width: 800px; /* Adjust width as needed */
   margin: 0 auto;
+  height: 600px; /* Fixed height */
+  overflow-y: auto; /* Enable vertical scrolling */
   padding: 20px;
+  background-color: transparent; /* Solid transparent background */
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.menu-container::-webkit-scrollbar {
+  width: 10px;
+}
+
+.menu-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.menu-container::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+.menu-container::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 .menu-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
+  justify-content: center;
 }
 
 .menu-item {
   border: 1px solid #ddd;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: transparent; /* Solid transparent background for menu items */
+}
+
+.menu-item:hover {
+  transform: scale(1.05);
 }
 
 .menu-item-image {
@@ -25,28 +54,63 @@
 
 .menu-item-details {
   padding: 15px;
+  background-color: #f9f9f9; /* Light background for details */
+}
+
+.menu-item-details h3 {
+  margin: 0 0 10px 0;
+  color: #333;
 }
 
 .menu-item-price {
-  color: #007bff;
   font-weight: bold;
+  color: #007bff;
+  margin-bottom: 10px;
+}
+
+.menu-item-select {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+  background-color: transparent;
 }
 
 .order-section {
-  margin-top: 20px;
-  text-align: center;
+  position: sticky;
+  bottom: 0;
+  background-color: transparent; /* Solid transparent background */
+  padding: 15px;
+  z-index: 10;
 }
 
 .order-button {
   background-color: #28a745;
-  color: white;
+  color: transparent;
   border: none;
-  padding: 10px 20px;
+  padding: 12px 24px;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.order-button:hover {
+  background-color: #218838;
 }
 
 .order-button:disabled {
-  background-color: #cccccc;
+  background-color: #6c757d;
   cursor: not-allowed;
+}
+
+/* Optional: Make the page background transparent */
+body {
+  background-color: transparent;
+}
+
+/* Optional: Ensure parent containers are transparent */
+.page-container {
+  background-color: transparent;
 }
