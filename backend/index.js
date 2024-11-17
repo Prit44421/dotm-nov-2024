@@ -4,6 +4,7 @@ import pg from "pg";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 import env from "dotenv";
 
 const app = express();
@@ -11,8 +12,14 @@ const port = 3000;
 const saltRounds = 10;
 env.config();
 
-app.use(cors()); // Enable CORS
+app.use(
+  cors({
+    origin: "http://localhost:3001", // Replace with your React app's URL
+    credentials: true, // Allow credentials (cookies) to be sent
+  })
+);
 app.use(bodyParser.json());
+app.use(cookieParser());
 app.use(express.static("public"));
 
 const db = new pg.Client({
@@ -24,10 +31,9 @@ const db = new pg.Client({
 });
 db.connect();
 
-// Middleware to authenticate JWT tokens
+// Middleware to authenticate JWT tokens from cookies
 function authenticateToken(req, res, next) {
-  const authHeader = req.headers["authorization"];
-  const token = authHeader && authHeader.split(" ")[1]; // Bearer TOKEN
+  const token = req.cookies.token;
 
   if (token == null) return res.status(401).json({ message: "Unauthorized" });
 
@@ -76,9 +82,17 @@ app.post("/api/register", async (req, res) => {
       const user = result.rows[0];
       const token = jwt.sign(
         { id: user.id, email: user.email },
-        process.env.JWT_SECRET
+        process.env.JWT_SECRET,
+        { expiresIn: "1h" } // Token expires in 1 hour
       );
-      res.json({ token });
+      // Set token as HTTP-only cookie
+      res
+        .cookie("token", token, {
+          httpOnly: true,
+          secure: false, // Set to true if using HTTPS
+          maxAge: 3600000, // 1 hour in milliseconds
+        })
+        .json({ message: "User registered successfully" });
     }
   } catch (err) {
     console.error(err);
@@ -100,9 +114,17 @@ app.post("/api/login", async (req, res) => {
       if (valid) {
         const token = jwt.sign(
           { id: user.id, email: user.email },
-          process.env.JWT_SECRET
+          process.env.JWT_SECRET,
+          { expiresIn: "1h" }
         );
-        res.json({ token });
+        // Set token as HTTP-only cookie
+        res
+          .cookie("token", token, {
+            httpOnly: true,
+            secure: false, // Set to true if using HTTPS
+            maxAge: 3600000,
+          })
+          .json({ message: "Logged in successfully" });
       } else {
         res.status(401).json({ message: "Incorrect password" });
       }
@@ -142,10 +164,14 @@ app.post("/api/order", authenticateToken, async (req, res) => {
   }
 });
 
-// Logout route (not necessary with JWT but included if you need to perform any cleanup)
+// Logout route
 app.post("/api/logout", (req, res) => {
-  // Since JWTs are stateless, there's no need to handle logout on the server side unless using a blacklist
-  res.json({ message: "Logged out successfully" });
+  res
+    .clearCookie("token", {
+      httpOnly: true,
+      secure: false, // Set to true if using HTTPS
+    })
+    .json({ message: "Logged out successfully" });
 });
 
 app.listen(port, () => {
