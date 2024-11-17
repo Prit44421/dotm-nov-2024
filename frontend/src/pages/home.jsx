@@ -17,7 +17,7 @@ const homepage = () => {
                     <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
                         <img src={require('../assets/x.png')} alt="Twitter" />
                     </a>
-                    <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer">
                         <img src={require('../assets/yt.png')} alt="LinkedIn" />
                     </a>
                 </div>

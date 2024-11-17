@@ -3,10 +3,11 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LandingAnimation from './components/LandingAnimation';
 import Navbar from './components/Navbar';
-import Home from './pages/Home'; // Ensure you have a Home component
-// import Menu from './pages/Menu'; // Create a Menu component
-// import Order from './pages/Order'; // Create an Order component
-// import Credits from './pages/Credits'; // Create a Credits component
+import Home from './pages/Home';
+import AuthForm from './pages/AuthForm'; // Ensure you have an AuthForm component
+// import Menu from './pages/Menu'; // Ensure you have a Menu component
+// import Order from './pages/Order'; // Ensure you have an Order component
+// import Credits from './pages/Credits'; // Ensure you have a Credits component
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -18,21 +19,26 @@ function App() {
 
     return () => clearTimeout(timer);
   }, []);
+  
+  const handleAuthSuccess = () => {
+    // Handle authentication success logic here
+  };
 
   return (
-    <>
-    <Home/>
     <Router>
       <LandingAnimation loading={loading} />
       <Navbar visible={!loading} />
       <Routes>
-        {/* <Route path="/menu" component={Menu} /> */}
-        {/* <Route path="/order" component={Order} /> */}
-        {/* <Route path="/credits" component={Credits} /> */}
-        <Route path="/" component={Home} />
+        {/* Default route to Home */}
+        <Route path="/" element={<Home />} />
+        
+        {/* Other routes */}
+        <Route path="/auth" element={<AuthForm onAuthSuccess={handleAuthSuccess} />} />
+        {/* <Route path="/menu" element={<Menu />} />
+        <Route path="/order" element={<Order />} />
+        <Route path="/credits" element={<Credits />} /> */}
       </Routes>
     </Router>
-    </>
   );
 }
 
