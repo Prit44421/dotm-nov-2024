@@ -1,0 +1,22 @@
+/* src/components/LandingAnimation.css */
+.landing-animation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  overflow: hidden; /* Prevent overflow during animation */
+}
+
+.landing-animation img {
+  width: 100vw;
+  object-fit: cover; /* Responsive image */
+  height: auto; /* Maintain aspect ratio */
+}
+.fly-out {
+  animation: fly-out 1s ease-in-out; /* Ensure image also transitions */
+}
+@keyframes fly-out {
+  to {
+    transform: translateY(-150vh);
+  } /* Move the image out of the viewport */
+}
