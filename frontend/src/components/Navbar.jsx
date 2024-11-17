@@ -1,13 +1,32 @@
 // src/components/Navbar.jsx
-import React from 'react';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
-import { isLoggedIn, logoutUser  } from '../api'; // Import API functions
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { isLoggedIn, logoutUser } from '../api'; // Ensure these are imported correctly
 import './Navbar.css';
 
 const Navbar = ({ visible }) => {
+    const [loggedIn, setLoggedIn] = useState(false);
+    const navigate = useNavigate();
+
+    // Check login status when component mounts and update state
+    useEffect(() => {
+        const checkLoginStatus = () => {
+            const status = isLoggedIn();
+            setLoggedIn(status);
+        };
+
+        checkLoginStatus();
+    }, []);
+
     const handleLogout = () => {
-        logoutUser (); // Call logout function
-        window.location.reload(); // Reload the page or redirect as needed
+        // Call logout function from api
+        logoutUser();
+        
+        // Update login state
+        setLoggedIn(false);
+        
+        // Redirect to home or login page
+        navigate('/');
     };
 
     return (
@@ -18,11 +37,12 @@ const Navbar = ({ visible }) => {
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/menu">Menu</Link></li>
                     <li><Link to="/order">Order</Link></li>
-                    <li><Link to="/credits">Credits</Link></li>
+                    {/* Only show Order link if logged in */}
+                    {loggedIn && <li><Link to="/order">Order</Link></li>}
                 </ul>
             </div>
             <div className="sign-in">
-                {isLoggedIn() ? (
+                {loggedIn ? (
                     <button onClick={handleLogout}>Logout</button>
                 ) : (
                     <Link to="/auth">

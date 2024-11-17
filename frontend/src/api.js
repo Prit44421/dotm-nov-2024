@@ -48,24 +48,58 @@ export const loginUser  = async (email, password) => {
   }
 };
 
-// Function to check if the user is logged in
+
+// Function to check if user is logged in
 export const isLoggedIn = () => {
-  const token = localStorage.getItem('token');
-  return !!token; // Returns true if token exists, false otherwise
+    // Check for token in localStorage or sessionStorage
+    const token = localStorage.getItem('token') || sessionStorage.getItem('token');
+    
+    // Optional: You can add additional validation like checking token expiration
+    if (token) {
+        try {
+            // If you're using JWT, you might want to decode and check expiration
+            // This is a simple implementation
+            return true;
+        } catch (error) {
+            // If token is invalid, remove it
+            localStorage.removeItem('token');
+            sessionStorage.removeItem('token');
+            return false;
+        }
+    }
+    return false;
 };
 
 // Function to log out the user
-export const logoutUser  = () => {
-  localStorage.removeItem('token'); // Remove the token from local storage
-  // Optionally, you could also call a logout API endpoint if needed
+export const logoutUser = async () => {
+    try {
+        // Optional: Call backend logout endpoint
+        await fetch('http://localhost:3000/api/logout', {
+            method: 'POST',
+            credentials: 'include' // Important for cookies
+        });
+
+        // Remove token from storage
+        localStorage.removeItem('token');
+        sessionStorage.removeItem('token');
+
+        // Optional: Additional cleanup
+        // You might want to clear other user-related data
+    } catch (error) {
+        console.error('Logout failed', error);
+    }
 };
 
-// Function to set the token in local storage
-export const setToken = (token) => {
-  localStorage.setItem('token', token);
+// Function to set token after login
+export const setToken = (token, rememberMe = false) => {
+    if (rememberMe) {
+        localStorage.setItem('token', token);
+    } else {
+        sessionStorage.setItem('token', token);
+    }
 };
 
-// Function to get the token from local storage
+// Function to get current token
 export const getToken = () => {
-  return localStorage.getItem('token');
+    return localStorage.getItem('token') || sessionStorage.getItem('token');
 };

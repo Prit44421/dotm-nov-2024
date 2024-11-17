@@ -6,8 +6,7 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import AuthForm from './pages/AuthForm'; // Ensure you have an AuthForm component
 import Menu from './pages/Menu'; // Ensure you have a Menu component
-// import Order from './pages/Order'; // Ensure you have an Order component
-// import Credits from './pages/Credits'; // Ensure you have a Credits component
+import Order from './pages/Order'; // Ensure you have an Order component
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -19,7 +18,7 @@ function App() {
 
     return () => clearTimeout(timer);
   }, []);
-  
+
   const handleAuthSuccess = () => {
     // Handle authentication success logic here
   };
@@ -31,12 +30,11 @@ function App() {
       <Routes>
         {/* Default route to Home */}
         <Route path="/" element={<Home />} />
-        
+
         {/* Other routes */}
         <Route path="/auth" element={<AuthForm onAuthSuccess={handleAuthSuccess} />} />
-         <Route path="/menu" element={<Menu />} />
-        {/*<Route path="/order" element={<Order />} />
-        <Route path="/credits" element={<Credits />} /> */}
+        <Route path="/menu" element={<Menu />} />
+        <Route path="/order" element={<Order />} />
       </Routes>
     </Router>
   );

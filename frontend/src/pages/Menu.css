@@ -1,12 +1,12 @@
 .menu-container {
   max-width: 800px; /* Adjust width as needed */
   margin: 0 auto;
-  height: 600px; /* Fixed height */
+  height: calc(100vh - 10rem); /* Fixed height */
   overflow-y: auto; /* Enable vertical scrolling */
   padding: 20px;
   background-color: transparent; /* Solid transparent background */
   border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  color: white;
 }
 
 .menu-container::-webkit-scrollbar {
@@ -94,6 +94,8 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
   width: 100%;
+  color: black;
+  font: 20px;
 }
 
 .order-button:hover {

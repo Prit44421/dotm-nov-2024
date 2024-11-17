@@ -1,4 +1,9 @@
 /* src/components/Navbar.css */
+
+@font-face {
+    font-family: 'gagalin';
+    src: url('../assets/gagalin.otf') format('opentype');
+}
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -6,6 +11,7 @@
     padding: 10px 20px;
     opacity: 0; /* Start hidden */
     transition: opacity 2s ease; /* Smooth transition */
+    font-family: 'gagalin';
 }
 
 .nav {

@@ -1,45 +1,109 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Menu.css'
+
 
 function Menu() {
   const [menuItems, setMenuItems] = useState([]);
   const [selectedItems, setSelectedItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
+  
 
   // Placeholder data
   const placeholderMenuItems = [
     {
       sr_no: 1,
-      food_item_name: 'Cheeseburger',
-      price: 9.99,
-      image_link: 'https://via.placeholder.com/250x250?text=Cheeseburger'
+      food_item_name: 'Butter Chicken',
+      price: 14.99,
+      image_link: 'https://via.placeholder.com/250x250?text=Butter+Chicken'
     },
     {
       sr_no: 2,
-      food_item_name: 'Margherita Pizza',
-      price: 12.99,
-      image_link: 'https://via.placeholder.com/250x250?text=Margherita+Pizza'
+      food_item_name: 'Paneer Tikka Masala',
+      price: 13.99,
+      image_link: 'https://via.placeholder.com/250x250?text=Paneer+Tikka+Masala'
     },
     {
       sr_no: 3,
-      food_item_name: 'Caesar Salad',
-      price: 7.99,
-      image_link: 'https://via.placeholder.com/250x250?text=Caesar+Salad'
+      food_item_name: 'Dal Makhani',
+      price: 11.99,
+      image_link: 'https://via.placeholder.com/250x250?text=Dal+Makhani'
     },
     {
       sr_no: 4,
-      food_item_name: 'Pasta Primavera',
-      price: 11.99,
-      image_link: 'https://via.placeholder.com/250x250?text=Pasta+Primavera'
+      food_item_name: 'Biryani',
+      price: 15.99,
+      image_link: 'https://via.placeholder.com/250x250?text=Biryani'
     },
     {
       sr_no: 5,
-      food_item_name: 'Chocolate Cake',
-      price: 4.99,
-      image_link: 'https://via.placeholder.com/250x250?text=Chocolate+Cake'
+      food_item_name: 'Naan Bread',
+      price: 3.99,
+      image_link: 'https://via.placeholder.com/250x250?text=Naan'
     },
-  ];
+    {
+      sr_no: 6,
+      food_item_name: 'Samosa',
+      price: 5.99,
+      image_link: 'https://via.placeholder.com/250x250?text=Samosa'
+    },
+    {
+      sr_no: 7,
+      food_item_name: 'Palak Paneer',
+      price: 12.99,
+      image_link: 'https://via.placeholder.com/250x250?text=Palak+Paneer'
+    },
+    {
+      sr_no: 8,
+      food_item_name: 'Chicken Tikka',
+      price: 13.99,
+      image_link: 'https://via.placeholder.com/250x250?text=Chicken+Tikka'
+    },
+    {
+      sr_no: 9,
+      food_item_name: 'Malai Kofta',
+      price: 12.99,
+      image_link: 'https://via.placeholder.com/250x250?text=Malai+Kofta'
+    },
+    {
+      sr_no: 10,
+      food_item_name: 'Chole Bhature',
+      price: 11.99,
+      image_link: 'https://via.placeholder.com/250x250?text=Chole+Bhature'
+    },
+    {
+      sr_no: 11,
+      food_item_name: 'Gulab Jamun',
+      price: 4.99,
+      image_link: 'https://via.placeholder.com/250x250?text=Gulab+Jamun'
+    },
+    {
+      sr_no: 12,
+      food_item_name: 'Tandoori Roti',
+      price: 2.99,
+      image_link: 'https://via.placeholder.com/250x250?text=Tandoori+Roti'
+    },
+    {
+      sr_no: 13,
+      food_item_name: 'Vegetable Korma',
+      price: 11.99,
+      image_link: 'https://via.placeholder.com/250x250?text=Vegetable+Korma'
+    },
+    {
+      sr_no: 14,
+      food_item_name: 'Raita',
+      price: 3.99,
+      image_link: 'https://via.placeholder.com/250x250?text=Raita'
+    },
+    {
+      sr_no: 15,
+      food_item_name: 'Mango Lassi',
+      price: 4.99,
+      image_link: 'https://via.placeholder.com/250x250?text=Mango+Lassi'
+    }
+];
 
   useEffect(() => {
     // Simulate loading time
@@ -71,6 +135,7 @@ function Menu() {
     // Simulate order placement
     alert(`Order placed for items: ${selectedItems.join(', ')}`);
     setSelectedItems([]); // Clear selected items after order
+    navigate('/order', { state: { selectedItems: menuItems.filter(item => selectedItems.includes(item.sr_no)) } });
   };
 
   if (loading) {
@@ -79,6 +144,7 @@ function Menu() {
 
   return (
     <div className="menu-container">
+      <h1>Our Menu</h1>
       {menuItems.length === 0 ? (
         <p>No menu items available</p>
       ) : (
@@ -112,7 +178,7 @@ function Menu() {
           disabled={selectedItems.length === 0}
           className="order-button"
         >
-          Order Now
+          <strong>Order Now</strong>
         </button>
       </div>
     </div>
