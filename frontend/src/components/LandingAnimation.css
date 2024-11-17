@@ -4,9 +4,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /*Full viewport height*/
+  height: 100vh; /* Full viewport height */
   overflow: hidden; /* Prevent overflow during animation */
-  z-index: 1000;
+  z-index: 10; /* Keep this on top */
 }
 
 .landing-animation img {
@@ -16,11 +16,14 @@
   height: auto; /* Maintain aspect ratio */
   overflow: hidden;
 }
+
 .fly-out {
-  animation: fly-out 1s ease-in-out; /* Ensure image also transitions */
+  animation: fade-back 1s ease-in-out forwards; /* Add animation */
 }
-@keyframes fly-out {
+
+@keyframes fade-back {
   to {
-    transform: translateY(-150vh);
-  } /* Move the image out of the viewport */
+    filter: brightness(50%);
+    z-index: -1; /* Set z-index to -1 to act as background */
+}
 }

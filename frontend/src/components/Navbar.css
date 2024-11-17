@@ -1,12 +1,28 @@
+/* src/components/Navbar.css */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
+    opacity: 0; /* Start hidden */
+    transition: opacity 2s ease; /* Smooth transition */
 }
 
-.logo img {
-    height: 40px; /* Adjust logo height */
+.nav {
+    display: flex;
+    gap: 20px;
+}
+
+.fade-in {
+    opacity: 1; /* Fully visible */
+}
+
+.fade-out {
+    opacity: 0; /* Fully hidden */
+}
+
+.logo {
+    color: yellow;
 }
 
 .nav-links {
@@ -23,15 +39,18 @@
     color: white;
     text-decoration: none;
     font-size: 16px;
+    padding: 10px;
+    border-radius: 26px;
+    transition: all 0.6s ease-in-out;
 }
 
 .nav-links a:hover {
-    text-decoration: underline; /* Underline on hover */
+    background-color: white;
+    color: black;
 }
 
 .sign-in button {
-    background-color: #ffe945; /* Green background */
-    color: white; /* White text */
+    background-color: #ffe945; /* Yellow background */
     border: none;
     padding: 10px 15px;
     cursor: pointer;
@@ -39,5 +58,6 @@
 }
 
 .sign-in button:hover {
-    background-color: #45a049; /* Darker green on hover */
+    background-color: #ffef77;
+    box-shadow: 0 0 5px 5px rgba(0,0,0,0.1);
 }

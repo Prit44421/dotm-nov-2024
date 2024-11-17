@@ -5,7 +5,23 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.Main-title {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  top: 50vh;
+  left: 50vw;
+  transform: translate(-50%,-50%);
+}
+
+.Main-title .name {
+  font-size: 100px;
+  color: yellow;
+}
+
+.Main-title .quote {
+  font-size: 70px;
+  color: white;
 }
