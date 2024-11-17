@@ -1,23 +1,22 @@
 // src/components/Navbar.jsx
 import React from 'react';
-import './Navbar.css'; // Import the CSS file for styling
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import './Navbar.css';
 
 const Navbar = ({ visible }) => {
     return (
         <nav className={`navbar ${visible ? 'fade-in' : 'fade-out'}`}>
             <div className="nav">
-                <div className="logo">
-                    Sugandhim
-                </div>
+                <div className="logo">Sugandhim</div>
                 <ul className="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#menu">Menu</a></li>
-                    <li><a href="#order">Order</a></li>
-                    <li><a href="#credits">Credits</a></li>
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/menu">Menu</Link></li>
+                    <li><Link to="/order">Order</Link></li>
+                    <li><Link to="/credits">Credits</Link></li>
                 </ul>
             </div>
             <div className="sign-in">
-                <button>sign in</button>
+                <button>Sign In</button>
             </div>
         </nav>
     );

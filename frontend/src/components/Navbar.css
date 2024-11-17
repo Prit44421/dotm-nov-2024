@@ -45,12 +45,12 @@
 }
 
 .nav-links a:hover {
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.75);
     color: black;
 }
 
 .sign-in button {
-    background-color: #ffe945; /* Yellow background */
+    background-color: #fce327; /* Yellow background */
     border: none;
     padding: 10px 15px;
     cursor: pointer;
@@ -58,6 +58,6 @@
 }
 
 .sign-in button:hover {
-    background-color: #ffef77;
+    background-color: #ffe30f;
     box-shadow: 0 0 5px 5px rgba(0,0,0,0.1);
 }

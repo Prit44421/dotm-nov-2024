@@ -25,3 +25,8 @@
   font-size: 70px;
   color: white;
 }
+
+.Main-title img {
+  aspect-ratio: 1;
+  width: 2.5rem;
+}
