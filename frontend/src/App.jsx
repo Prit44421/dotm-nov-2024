@@ -1,5 +1,7 @@
-import LandingAnimation from './components/LandingAnimation';
 import React, { useState, useEffect } from 'react';
+import LandingAnimation from './components/LandingAnimation';
+import navbar from './components/Navbar';
+import Navbar from './components/Navbar';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -14,7 +16,8 @@ function App() {
   }, []);
 
   return (
-    <LandingAnimation loading={loading} />
+    <><LandingAnimation loading={loading} />
+    <Navbar /></>
   );
 }
 
