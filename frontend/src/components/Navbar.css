@@ -1,9 +1,5 @@
 /* src/components/Navbar.css */
 
-@font-face {
-    font-family: 'gagalin';
-    src: url('../assets/gagalin.otf') format('opentype');
-}
 .navbar {
     display: flex;
     justify-content: space-between;

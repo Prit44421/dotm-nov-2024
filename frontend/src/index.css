@@ -5,6 +5,11 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+@font-face {
+  font-family: 'gagalin';
+  src: url('assets/gagalin.otf') format('opentype');
+}
+
 .Main-title {
   position: absolute;
   display: flex;
@@ -14,6 +19,7 @@
   top: 50vh;
   left: 50vw;
   transform: translate(-50%,-50%);
+  font-family: 'gagalin';
 }
 
 .Main-title .name {
