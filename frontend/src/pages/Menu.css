@@ -1,12 +1,28 @@
+:root {
+  --primary-color: #28a745; /* Green for buttons */
+  --hover-color: #218838; /* Darker green for hover */
+  --background-color: #333; /* Dark background */
+  --text-color: #fff; /* White text */
+  --light-bg: #f9f9f9; /* Light background for details */
+  --border-color: #ddd; /* Light border color */
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: 'Arial', sans-serif; /* Example font */
+  margin: 0;
+  padding: 0;
+}
+
 .menu-container {
-  max-width: 800px; /* Adjust width as needed */
+  max-width: 800px;
   margin: 0 auto;
-  height: calc(100vh - 10rem); /* Fixed height */
-  overflow-y: auto; /* Enable vertical scrolling */
+  height: calc(100vh - 10rem);
+  overflow-y: auto;
   padding: 20px;
-  background-color: transparent; /* Solid transparent background */
+  background-color: transparent;
   border-radius: 10px;
-  color: white;
 }
 
 .menu-container::-webkit-scrollbar {
@@ -34,16 +50,18 @@
 }
 
 .menu-item {
-  border: 1px solid #ddd;
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   overflow: hidden;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  background-color: transparent; /* Solid transparent background for menu items */
+  background-color: transparent;
+  color: black;
 }
 
 .menu-item:hover {
   transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 .menu-item-image {
@@ -54,7 +72,7 @@
 
 .menu-item-details {
   padding: 15px;
-  background-color: #f9f9f9; /* Light background for details */
+  background-color: var(--light-bg);
 }
 
 .menu-item-details h3 {
@@ -64,7 +82,7 @@
 
 .menu-item-price {
   font-weight: bold;
-  color: #007bff;
+  color: var(--primary-color);
   margin-bottom: 10px;
 }
 
@@ -80,14 +98,13 @@
 .order-section {
   position: sticky;
   bottom: 0;
-  background-color: transparent; /* Solid transparent background */
+  background-color: transparent;
   padding: 15px;
   z-index: 10;
 }
 
 .order-button {
-  background-color: #28a745;
-  color: transparent;
+  background-color: var(--primary-color);
   border: none;
   padding: 12px 24px;
   border-radius: 5px;
@@ -95,24 +112,14 @@
   transition: background-color 0.3s ease;
   width: 100%;
   color: black;
-  font: 20px;
+  font-size: 20px;
 }
 
 .order-button:hover {
-  background-color: #218838;
+  background-color: var(--hover-color);
 }
 
 .order-button:disabled {
   background-color: #6c757d;
   cursor: not-allowed;
-}
-
-/* Optional: Make the page background transparent */
-body {
-  background-color: transparent;
-}
-
-/* Optional: Ensure parent containers are transparent */
-.page-container {
-  background-color: transparent;
 }

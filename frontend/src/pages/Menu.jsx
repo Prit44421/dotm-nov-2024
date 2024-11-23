@@ -158,7 +158,7 @@ function Menu() {
               />
               <div className="menu-item-details">
                 <h3>{item.food_item_name}</h3>
-                <p className="menu-item-price">${item.price.toFixed(2)}</p>
+                <p className="menu-item-price">₹{item.price.toFixed(2)}</p>
                 <label className="menu-item-select">
                   <input
                     type="checkbox"
