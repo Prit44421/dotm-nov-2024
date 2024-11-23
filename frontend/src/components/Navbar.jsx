@@ -46,7 +46,7 @@ const Navbar = ({ visible }) => {
                     <button onClick={handleLogout}>Logout</button>
                 ) : (
                     <Link to="/auth">
-                        <button>{loggedIn ? 'sign up': 'sign out'}</button>
+                        <button>sign up</button>
                     </Link>
                 )}
             </div>
